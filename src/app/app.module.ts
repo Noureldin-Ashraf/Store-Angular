@@ -12,6 +12,7 @@ import { CartComponent } from './cart/cart.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartFormComponent } from './cart-form/cart-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductItemDetailComponent,
     CartComponent,
     ConfirmationComponent,
-    HeaderComponent
+    HeaderComponent,
+    CartFormComponent
   ],
   imports: [
     BrowserModule,

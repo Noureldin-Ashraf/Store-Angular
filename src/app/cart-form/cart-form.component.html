@@ -1,0 +1,13 @@
+<form  style ="margin-left: 80px;"class="form-margin" #form="ngForm"  (ngSubmit)="onSubmit()">
+    <h1> Checkout</h1>
+    <label>Full Name: </label><br />
+    <input style =" width: 250px;" type='text' name='fullName' required minlength="9" placeholder="Please Enter Your Full Name" [(ngModel)]="fullName">
+    <br />
+    <label>Address: </label><br />
+    <input style =" width: 250px;" type='text' name='address' required  minlength="10" placeholder="Please Enter Delivery Address" [(ngModel)]="address">
+    <br />
+    <label>Credit Card Number: </label><br />
+    <input style =" width: 250px;" type='text' name='creditCard' required  minlength="16" maxlength="16" placeholder="(16-digit number)" [(ngModel)]="creditCard">
+    <br /> <br />
+    <input [disabled]="form.invalid" type='submit' value="Submit" class="btn btn-primary" />
+</form>

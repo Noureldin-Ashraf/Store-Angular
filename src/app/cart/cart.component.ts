@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cart } from '../models/Cart';
 import { CartService } from '../services/cart.service';
 
@@ -13,10 +14,11 @@ export class CartComponent {
   totalPrice: number = 0;
 
 
-  constructor(private cartService: CartService){
+  constructor(private cartService: CartService,private route: Router){
   }
   ngOnInit(): void {
     this.cartProducts = this.cartService.getCartProduct();
+    this.calculateTotalPrice();
   }
 
   //Function to change value on amount change
@@ -51,4 +53,9 @@ export class CartComponent {
     this.totalPrice = Number(this.totalPrice.toFixed(2));
   }
 
+  //Function to run after form submit
+  checkoutSuccess(fullName: string): void{
+    this.cartService.clearCart();
+    this.route.navigateByUrl(`success/${fullName}/${this.totalPrice}`);
+  }
 }

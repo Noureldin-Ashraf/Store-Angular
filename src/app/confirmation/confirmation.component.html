@@ -1,1 +1,14 @@
-<p>confirmation works!</p>
+<div class="confirmation-container">
+    <div class="confirmation-items ">
+        <div class="confirmation-header confirmation-item">
+            <h2>Order Confirmed</h2>
+        </div>
+        <div class="confirmation-item">
+           <p>Thank you, <b>{{ name }}</b> for your order</p>
+           <p>You Order Total is <b>$ {{amount}}</b></p>
+           <p>Order will be shipped within 3 buisness days</p>
+            <br><br>
+            <a routerLink="/">Continue Shopping</a>
+        </div>
+    </div>
+</div>

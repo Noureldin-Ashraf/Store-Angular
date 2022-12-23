@@ -25,9 +25,11 @@
         <div class="cart-item"><b>Total Price: ${{ totalPrice }}</b></div>
     </div>
     <div class="form-margin">
-           <!-- <app-create-form (checkoutSuccess)="checkoutSuccess($event)"></app-create-form>-->
+            <!-- Emitter to capture action from form component-->
+            <app-cart-form (checkoutSuccess)="checkoutSuccess($event)"></app-cart-form>
     </div>
 </div>
+
 <!-- Use ng template to render only in case of empty cart-->
 <ng-template #noCart>
     <div class="empty-cart-message">
