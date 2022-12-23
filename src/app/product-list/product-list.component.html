@@ -1,1 +1,13 @@
-<p>product-list works!</p>
+<!-- Used for testing data before attaching child component
+<ul *ngFor="let product of products">
+    <li>{{ product.name }} </li>
+    <li>{{ product.description }} </li>
+    <li>{{ product.price }} </li>
+    <li>{{ product.url }} </li>
+  </ul>
+  -->
+<div class="product-index">
+   
+        <app-product-item  *ngFor='let product of products' [product]="product"></app-product-item>
+  
+</div>

@@ -10,11 +10,17 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
+  /* Function to get all products*/
   getProducts(): Observable<Product[]>{
-
     //return this.http.get<Product[]>("https://jsonplaceholder.typicode.com/posts?_limit=5")
     return this.http.get<Product[]>("/assets/data.json")
   }
+
+  /*Funtion to get product by id
+  getProductByID(id: number): Observable<Product> {
+    return this.http.get<Product>("/assets/data.json/${id}")
+  }
+  */
   
 
 }

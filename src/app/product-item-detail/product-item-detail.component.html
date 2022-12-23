@@ -1,1 +1,28 @@
-<p>product-item-detail works!</p>
+<!-- Check if filter return result or not and generate the html-->
+<div *ngIf="product" class="detail-container">
+    
+        <img  src='{{ product.url}}'>
+        
+        <div class="detail-item">
+            <h2 style="font-weight: bold;">{{ product.name }}</h2>
+            <p>$ {{ product.price }}</p>
+            <p>{{ product.description }}</p>
+  
+            <form (submit)="onSubmit(product, $event)">
+                <select  class="product-detail form-select" aria-label="Default select example">  
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>       
+                </select>
+                <br>
+                <input type="submit" value="Add to Cart" class="product-detail btn btn-primary">
+
+                <br> <br>
+
+                <a class="btn btn-outline-secondary btn-sm" routerLink="/">Return to product list</a>   
+            </form>
+
+        </div>
+</div>

@@ -1,1 +1,36 @@
-<p>cart works!</p>
+<!-- Check if array has data, else proc the nocart template-->
+<div *ngIf="cartProducts.length; else noCart" class="cart-container">
+    <div class="cart-item-details">
+        <div *ngFor="let cartProduct of cartProducts" class="cart-item">
+            <img class="" src='{{cartProduct.url}}'>
+            <div class="cart-panel">
+                <div class="cart-item-detail">
+                    <p style="font-weight: bold;">{{ cartProduct.name}}</p>
+                    <p>$ {{ cartProduct.price}}</p>
+                
+                    <select (change)="AdjustProductAmount(cartProduct.id, $event)" style="width: 100px;">
+                        <!-- Loop on default value and set selected queals to cart amount-->
+                        <option 
+                            *ngFor="let option of [1,2,3,4,5]" 
+                            [ngValue]="option"
+                            [selected]="cartProduct.amount == option">
+                            {{ option }}
+                        </option>
+                    </select>  
+                    <br> <br>
+                    <button (click)="RemoveFromCart(cartProduct.id)"  class="cart-item-detail btn btn-danger">Remove</button>
+                </div>
+            </div>
+        </div>
+        <div class="cart-item"><b>Total Price: ${{ totalPrice }}</b></div>
+    </div>
+    <div class="form-margin">
+           <!-- <app-create-form (checkoutSuccess)="checkoutSuccess($event)"></app-create-form>-->
+    </div>
+</div>
+<!-- Use ng template to render only in case of empty cart-->
+<ng-template #noCart>
+    <div class="empty-cart-message">
+    Cart is Empty! Please, <a routerLink="/"> add product to cart</a>. 
+    </div>
+</ng-template>
