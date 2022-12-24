@@ -1,13 +1,48 @@
 <form  style ="margin-left: 80px;"class="form-margin" #form="ngForm"  (ngSubmit)="onSubmit()">
     <h1> Checkout</h1>
-    <label>Full Name: </label><br />
-    <input style =" width: 250px;" type='text' name='fullName' required minlength="9" placeholder="Please Enter Your Full Name" [(ngModel)]="fullName">
-    <br />
-    <label>Address: </label><br />
-    <input style =" width: 250px;" type='text' name='address' required  minlength="10" placeholder="Please Enter Delivery Address" [(ngModel)]="address">
-    <br />
-    <label>Credit Card Number: </label><br />
-    <input style =" width: 250px;" type='text' name='creditCard' required  minlength="16" maxlength="16" placeholder="(16-digit number)" [(ngModel)]="creditCard">
-    <br /> <br />
-    <input [disabled]="form.invalid" type='submit' value="Submit" class="btn btn-primary" />
+    <label>Full Name: *</label><br />
+    <input style =" width: 250px;" type='text' name='fullName' required minlength="9" placeholder="Please Enter Your Full Name" [(ngModel)]="fullName"
+    #name="ngModel">
+    <br/><br/>
+    <div *ngIf="name.invalid && name.dirty" class="alert alert-danger" role="alert">
+        <div *ngIf="name.errors?.['required']">
+            Please Provide your Full Name.
+        </div>
+        <div *ngIf="name.errors?.['minlength']">
+            Please Enter a Valid Name.
+        </div>
+    </div>
+
+    <label>Address: *</label><br />
+    <input style =" width: 250px;" type='text' name='address' required  minlength="10" placeholder="Please Enter Delivery Address" [(ngModel)]="address"
+    #addr="ngModel">
+    <br/>  <br/>
+    <div *ngIf="addr.invalid && addr.dirty" class="alert alert-danger" role="alert">
+        <div *ngIf="addr.errors?.['required']">
+            Please Provide your Address Data.
+        </div>
+        <div *ngIf="addr.errors?.['minlength']">
+            Please Enter a Valid Address.
+        </div>
+    </div>
+
+    <label>Credit Card Number: *</label><br />
+    <input style =" width: 250px;" type='text' name='creditCard' required  minlength="16" maxlength="16" placeholder="(16-digit number)" 
+    [(ngModel)]="creditCard" #card="ngModel" (ngModelChange)="validateCard($event)">
+    <br/>  <br/>
+    <div *ngIf="card.invalid && card.dirty" class="alert alert-danger" role="alert">
+        <div *ngIf="card.errors?.['required']">
+            Please Provide your Credit Card Data.
+        </div>
+        <div *ngIf="card.errors?.['minlength']">
+            Please Enter a Valid Credit Card.
+        </div>
+    </div>
+   
+   <input [disabled]="form.invalid" type='submit' value="Submit" class="btn btn-primary" />
 </form>
+
+
+
+
+    

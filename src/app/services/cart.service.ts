@@ -12,10 +12,10 @@ export class CartService {
   constructor() { }
 
   addToCart(product: Cart[]): void{
-    this.myStorage.setItem('cart', JSON.stringify(product));
+    this.myStorage.setItem('cartStorage', JSON.stringify(product));
   }
   getCartProduct(): Cart[] | []{
-    const getProduct = this.myStorage.getItem('cart')
+    const getProduct = this.myStorage.getItem('cartStorage')
     return getProduct? JSON.parse(getProduct): [];
   }
   clearCart(): void{
